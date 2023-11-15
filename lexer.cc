@@ -18,7 +18,7 @@ enum Token {
 static std::string IdentifierStr;
 static double NumVal;
 
-static int gettok() {
+static int getToken() {
 
     static int lastChar = ' ';
 
@@ -51,7 +51,7 @@ static int gettok() {
             lastChar = std::getchar();
         } while(std::isdigit(lastChar) || lastChar == '.');
 
-        // BUG: Check if numStr contains multiple points
+        // BUG: Check if numStr contains multiple decimal points
         NumVal = std::strtod(numStr.c_str(), 0);
         return token_number; 
     }
@@ -67,7 +67,7 @@ static int gettok() {
         );
 
         if(lastChar != EOF)
-            return gettok();
+            return getToken();
     }
 
     if(lastChar == EOF) 
